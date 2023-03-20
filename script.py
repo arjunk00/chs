@@ -2,6 +2,9 @@ import cv2
 import tensorflow as tf
 import os
 import time
+import pyttsx3
+#engine=pyttsx3.init()
+#engine.setProperty('volume',1.0)
 
 labels = ['cardboard', 'glass', 'metal', 'paper', 'plastic']
 width = 256
@@ -29,4 +32,8 @@ while True:
     final_prediction = output_data_tflite.argmax()
     pred = labels[final_prediction]
     print(pred)
+    engine=pyttsx3.init()
+	#engine.setProperty('volume',1.0)
+    engine.say(pred)
+    engine.runAndWait()
     time.sleep(1)
